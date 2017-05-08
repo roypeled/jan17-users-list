@@ -1,8 +1,12 @@
 class AppComponent {
 
     appendUserPage(id){
+        if(this.userPageElement)
+            this.userPageElement.remove();
+
         let userPage = new UserPageComponent(id);
-        this.element.append( userPage.render() );
+        this.userPageElement = userPage.render();
+        this.element.append( this.userPageElement );
     }
 
     getUsersList() {

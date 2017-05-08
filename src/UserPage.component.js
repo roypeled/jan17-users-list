@@ -9,14 +9,31 @@ class UserPageComponent {
             .then( this.appendUserDetails.bind(this) );
     }
 
+    getPosts(){
+        postsService
+            .getPosts(this.userId)
+            .then( this.appendUserPosts.bind(this) );
+    }
+
     appendUserDetails(user){
         let userComponent = new UserDetailsComponent(user);
-        this.element.append( userComponent.render() );
+        this.element.find(".details").append( userComponent.render() );
+    }
+
+    appendUserPosts(posts){
+        let userPosts = new PostsComponent(posts);
+        this.element.find(".posts").append( userPosts.render() );
     }
 
     render(){
-        this.element = $(`<main></main>`);
+        this.element = $(`
+            <main>
+                <div class="details"></div>
+                <div class="posts"></div>
+            </main>
+        `);
         this.getUser();
+        this.getPosts();
         return this.element;
     }
 }
