@@ -1,0 +1,23 @@
+{
+  "name": "users-list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roypeled/jan17-users-list.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/roypeled/jan17-users-list/issues"
+  },
+  "homepage": "https://github.com/roypeled/jan17-users-list#readme",
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "webpack": "^2.5.1"
+  }
+}
