@@ -1,3 +1,5 @@
+let $ = require("jquery");
+
 class UserService{
 
     constructor() {
@@ -14,4 +16,4 @@ class UserService{
 
 }
 
-const userService = new UserService();
+module.exports = new UserService();

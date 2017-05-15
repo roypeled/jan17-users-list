@@ -1,3 +1,5 @@
+let $ = require("jquery");
+
 class PostsService{
 
     constructor() {
@@ -5,9 +7,10 @@ class PostsService{
     }
 
     getPosts(userId){
+        console.log("requested user", userId);
         return $.get(this.url + userId);
     }
 
 }
 
-const postsService = new PostsService();
+module.exports = new PostsService();

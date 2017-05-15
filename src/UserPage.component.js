@@ -1,3 +1,9 @@
+let $ = require("jquery"),
+    UserDetailsComponent = require("./UserDetails.component"),
+    PostsComponent = require("./Posts.component"),
+    userService = require("./UserService"),
+    postsService = require("./PostsService");
+
 class UserPageComponent {
     constructor(userId){
         this.userId = userId;
@@ -37,3 +43,5 @@ class UserPageComponent {
         return this.element;
     }
 }
+
+module.exports = UserPageComponent;

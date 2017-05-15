@@ -3,3 +3,5 @@
 .idea
 .editorconfig
 *.iml
+node_modules/
+dist/
