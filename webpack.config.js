@@ -1,14 +1,57 @@
 var path = require("path");
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
 
-    entry: "./src/index.js",
+    entry: "./react/index.js",
 
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: "bundle.js"
+        filename: "bundle-[hash].js"
     },
 
-    devtool: "source-map"
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: "babel-loader"
+            },
+            {
+                test: /\.css$/,
+                use: ExtractTextPlugin.extract({
+                    use: ["css-loader"]
+                })
+            },
+
+            {
+                test: /\.scss$/,
+                use: ExtractTextPlugin.extract({
+                    use: ["css-loader", "sass-loader"]
+                })
+            },
+
+            {
+                test: /\.jpg$/,
+                use: {
+                    loader: "file-loader",
+                    query: {
+                        name: "[name]-[hash].[ext]"
+                    }
+                },
+            }
+        ]
+    },
+
+    devtool: "source-map",
+
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: "index.html"
+        }),
+
+        new ExtractTextPlugin("styles.css")
+    ]
 
 };

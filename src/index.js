@@ -1,3 +1,4 @@
-let createApp = require("./App.component");
+import createApp from "./App.component";
+import "./main.scss";
 
 createApp();

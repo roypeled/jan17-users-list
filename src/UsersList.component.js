@@ -23,7 +23,7 @@ class UsersListComponent {
     render(){
         let $html = $(`
 <nav>
-    <h3>Users</h3>
+    <h3>Users List</h3>
     <ul>
         ${ this.renderUsers() } 
     </ul>

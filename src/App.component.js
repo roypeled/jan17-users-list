@@ -1,9 +1,9 @@
-let $ = require("jquery"),
-    UserPageComponent = require("./UserPage.component"),
-    UsersListComponent = require("./UsersList.component"),
-    userService = require("./UserService");
+import $ from "jquery";
+import UserPageComponent from "./UserPage.component";
+import UsersListComponent from "./UsersList.component";
+import userService from "./UserService";
 
-class AppComponent {
+export class AppComponent {
 
     appendUserPage(id){
         if(this.userPageElement)
@@ -33,9 +33,7 @@ class AppComponent {
     }
 }
 
-function createApp(){
+export default function createApp(){
     let app = new AppComponent();
     $(document.body).append( app.render() );
 }
-
-module.exports = createApp;
