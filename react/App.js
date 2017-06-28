@@ -1,26 +1,27 @@
 import React from "react";
-import UserPage from "./UserPage";
-import UsersList from "./UsersList";
+import UserPage from "./userPage/UserPage";
+import UsersList from "./usersList/UsersList";
+import {connect} from "react-redux";
 
 import './main.scss';
 
-export default class App extends React.Component {
-    constructor(){
-        super();
-
-        this.state = {
-            selectedUser: null
-        }
-    }
-
-    selectUser(selectedUser){
-        this.setState({ selectedUser });
-    }
+class App extends React.Component {
 
     render(){
         return (<div>
-                    <UsersList onUserSelected={ this.selectUser.bind(this) } />
-                    <UserPage selectedUser={ this.state.selectedUser } />
+                    <UsersList/>
+                    <UserPage
+                        user={ this.props.selectedUser.details }
+                        posts={ this.props.selectedUser.posts } />
                 </div>)
     }
 }
+
+
+function mapStateToProps(state){
+    return {
+        selectedUser: state.friends.selectedUser
+    }
+}
+
+export default connect(mapStateToProps, null)(App);
