@@ -1,29 +1,34 @@
 import React from "react";
-import {connect} from "react-redux";
 import UserDetails from "./UserDetails";
 import UserPosts from "./UserPosts"
 
 import PostsService from "../../services/PostsService";
-import { setPosts } from "../../actions/creators";
+import UserService from "../../services/UserService";
 
 import "./user-page.scss";
 
 
-class UserPage extends React.Component {
+export default class UserPage extends React.Component {
 
-    componentWillReceiveProps(nextProps){
-        if( this.validateUsers(this.props.user, nextProps.user) )
-            this.getPosts(nextProps.user.details.id);
+    constructor({match}){
+        super();
+
+        this.state = {
+            user: null,
+            posts: null
+        };
+
+        if( match.params.id ){
+            this.getPosts(match.params.id);
+            this.getUser(match.params.id);
+        }
     }
 
-    validateUsers(previousUser, nextUser){
-        if(!nextUser || !nextUser.details)
-            return false;
-
-        if(!previousUser || !previousUser.details)
-            return true;
-
-        return previousUser.details.id != nextUser.details.id;
+    componentWillReceiveProps( {match} ){
+        if( match.params.id ){
+            this.getPosts(match.params.id);
+            this.getUser(match.params.id);
+        }
     }
 
     getPosts(userId){
@@ -32,22 +37,24 @@ class UserPage extends React.Component {
             .then( this.onPosts.bind(this) )
     }
 
+    getUser(userId){
+        UserService
+            .getUser(userId)
+            .then( this.onUser.bind(this) )
+    }
+
     onPosts(posts){
-        this.props.setPosts(posts);
+        this.setState({ posts })
+    }
+
+    onUser(user){
+        this.setState({ user })
     }
 
     render(){
         return (<main className="user-page">
-                    <UserDetails user={ this.props.user.details }/>
-                    <UserPosts posts={ this.props.user.posts }/>
+                    <UserDetails user={ this.state.user }/>
+                    <UserPosts posts={ this.state.posts }/>
                 </main>)
     }
 }
-
-function mapDispatchToProps(dispatch){
-    return {
-        setPosts: posts => dispatch( setPosts(posts) )
-    }
-}
-
-export default connect(null, mapDispatchToProps)(UserPage);

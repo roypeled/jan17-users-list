@@ -1,7 +1,8 @@
 import React from "react";
 import {connect} from "react-redux";
 import UserService from "../../services/UserService";
-import {addUsersList, selectUser} from "../../actions/creators";
+import {addUsersList} from "../../actions/creators";
+import {Link} from "react-router-dom";
 
 import "./users-list.scss";
 
@@ -20,11 +21,9 @@ class UsersList extends React.Component {
     }
 
     renderUser(user, i){
-        return <li key={i} onClick={ ()=> this.selectUser(user) }>{ user.name }</li>
-    }
-
-    selectUser(user){
-        this.props.onUserSelected(user);
+        return <li key={i}>
+                    <Link to={`/users/${user.id}`}>{ user.name }</Link>
+                </li>
     }
 
     render(){
@@ -45,8 +44,7 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
     return {
-        addUsers: (users) => dispatch( addUsersList(users) ),
-        onUserSelected: (user) => dispatch( selectUser(user) )
+        addUsers: (users) => dispatch( addUsersList(users) )
     }
 }
 

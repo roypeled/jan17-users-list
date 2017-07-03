@@ -3,9 +3,10 @@
 html, body {
     margin: 0;
     padding: 0;
-    background: $background url(./cat.jpg);
+    background: #767c8b linear-gradient(to bottom, #5e74c0, #767c8b) no-repeat;
     font-family: "Open Sans";
     font-weight: 300;
+    height: 100%;
 }
 
 body {
