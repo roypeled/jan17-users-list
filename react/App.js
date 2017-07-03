@@ -10,9 +10,7 @@ class App extends React.Component {
     render(){
         return (<div>
                     <UsersList/>
-                    <UserPage
-                        user={ this.props.selectedUser.details }
-                        posts={ this.props.selectedUser.posts } />
+                    <UserPage user={ this.props.selectedUser } />
                 </div>)
     }
 }

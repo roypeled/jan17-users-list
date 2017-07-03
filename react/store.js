@@ -5,7 +5,10 @@ const state = {
     loggedInUser: null,
     friends: {
         usersList: [],
-        selectedUser: {}
+        selectedUser: {
+            details: null,
+            posts: null
+        }
     }
 };
 

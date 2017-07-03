@@ -23,3 +23,7 @@ export function logIn(user){
 export function logOut(){
     return { type: ACTIONS.LOG_OUT };
 }
+
+export function setPosts(posts){
+    return { type: ACTIONS.SET_POSTS, posts };
+}
