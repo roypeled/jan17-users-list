@@ -52,6 +52,10 @@ module.exports = {
         }),
 
         new ExtractTextPlugin("styles.css")
-    ]
+    ],
+
+    devServer: {
+        historyApiFallback: true
+    }
 
 };

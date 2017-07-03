@@ -3,8 +3,8 @@ import {connect} from "react-redux";
 import UserDetails from "./UserDetails";
 import UserPosts from "./UserPosts"
 
-import PostsService from "../services/PostsService";
-import { setPosts } from "../actions/creators";
+import PostsService from "../../services/PostsService";
+import { setPosts } from "../../actions/creators";
 
 import "./user-page.scss";
 

@@ -10,7 +10,7 @@ function usersListReducer(state = [], action){
         case REMOVE_USER:
             return state.filter(user => user != action.user);
         case ADD_USERS_LIST:
-            return [...state, ...action.usersList];
+            return [...action.usersList];
     }
 
     return state;

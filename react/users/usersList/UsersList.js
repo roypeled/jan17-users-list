@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
-import UserService from "../services/UserService";
-import {addUsersList, selectUser} from "../actions/creators";
+import UserService from "../../services/UserService";
+import {addUsersList, selectUser} from "../../actions/creators";
 
 import "./users-list.scss";
 
