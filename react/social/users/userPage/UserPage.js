@@ -2,8 +2,8 @@ import React from "react";
 import UserDetails from "./UserDetails";
 import UserPosts from "./UserPosts"
 
-import PostsService from "../../services/PostsService";
-import UserService from "../../services/UserService";
+import PostsService from "../../../services/PostsService";
+import UserService from "../../../services/UserService";
 
 import "./user-page.scss";
 

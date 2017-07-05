@@ -1,8 +1,9 @@
 import React from "react";
 import {connect} from "react-redux";
-import UserService from "../../services/UserService";
-import {addUsersList} from "../../actions/creators";
+import UserService from "../../../services/UserService";
+import {addUsersList} from "../../../actions/creators";
 import {NavLink} from "react-router-dom";
+import {withRouter} from "react-router";
 
 import "./users-list.scss";
 
@@ -48,4 +49,4 @@ function mapDispatchToProps(dispatch){
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsersList)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UsersList));
