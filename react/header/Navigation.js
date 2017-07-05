@@ -1,13 +1,13 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 import "./navigation.scss";
 
 export default class Navigation extends React.Component {
     render(){
         return (<header className="navigation">
-                    <Link to="/">About</Link>
-                    <Link to="/users">Users</Link>
+                    <NavLink exact to="/" activeClassName="active">About</NavLink>
+                    <NavLink to="/users" activeClassName="active">Users</NavLink>
                 </header>);
     }
 }

@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import UserService from "../../services/UserService";
 import {addUsersList} from "../../actions/creators";
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 import "./users-list.scss";
 
@@ -22,7 +22,7 @@ class UsersList extends React.Component {
 
     renderUser(user, i){
         return <li key={i}>
-                    <Link to={`/users/${user.id}`}>{ user.name }</Link>
+                    <NavLink exact activeStyle={ { color: "yellow" } } activeClassName="active" to={`/users/${user.id}`}>{ user.name }</NavLink>
                 </li>
     }
 

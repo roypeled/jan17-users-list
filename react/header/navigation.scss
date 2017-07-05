@@ -10,5 +10,12 @@
     a {
         color: $fontColor;
         margin: 20px;
+        border: 0;
+        text-decoration: none;
+        padding: 10px;
+
+        &.active {
+            border: 1px solid $fontColor;
+        }
     }
 }

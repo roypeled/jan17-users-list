@@ -8,7 +8,7 @@ export default class App extends React.Component{
     render(){
         return (
             <div>
-                <Navigation/>
+                <Route path="" component={Navigation}/>
                 <Route path="/users" component={Users}/>
                 <Route exact path="/" component={About}/>
             </div>

@@ -10,7 +10,7 @@ class Users extends React.Component {
 
     render(){
         return (<div>
-                    <UsersList/>
+                    <UsersList match={this.props.match}/>
                     <Route path="/users/:id" component={UserPage}/>
                 </div>)
     }
