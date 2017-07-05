@@ -8,15 +8,17 @@ import "./login.scss";
 class Login extends React.Component {
 
     logIn(){
-        this.props.login({name: "Roy Peled"});
+        this.props.login({name: this.input.value });
     }
 
     render(){
         if(!this.props.isLoggedIn)
             return (
-                <div className="login-window">
-                    <button onClick={ ()=> this.logIn() }>Login</button>
-                </div>
+                <form className="login-window" onSubmit={ ()=> this.logIn() }>
+                    <input type="text" ref={ e => this.input = e }/>
+                    <br/>
+                    <input type="submit" value="Login"/>
+                </form>
             );
         else
             return <Redirect to="/"/>
