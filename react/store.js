@@ -1,8 +1,9 @@
 import {createStore} from "redux";
 import appReducers from "./reducers";
+import LoginService from "./services/LoginService";
 
 const state = {
-    loggedInUser: null,
+    loggedInUser: LoginService.get(),
     friends: {
         usersList: [],
         selectedUser: {

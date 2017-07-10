@@ -2,13 +2,16 @@ import React from "react";
 import {logIn} from "../actions/creators";
 import {connect} from "react-redux";
 import {Redirect} from "react-router";
+import LoginService from "../services/LoginService";
 
 import "./login.scss";
 
 class Login extends React.Component {
 
     logIn(){
-        this.props.login({name: this.input.value });
+        let user = {name: this.input.value };
+        LoginService.set(user);
+        this.props.login(user);
     }
 
     render(){
