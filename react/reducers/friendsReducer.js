@@ -1,5 +1,5 @@
 import {combineReducers} from "redux";
-import {ADD_USER, ADD_USERS_LIST, REMOVE_USER} from "../actions";
+import {ADD_USER, GET_USERS_LIST_RESPONSE, GET_USERS_LIST_REQUEST, REMOVE_USER} from "../actions";
 
 import selectedUserReducer from "./selectedUserReducer";
 
@@ -9,8 +9,20 @@ function usersListReducer(state = [], action){
             return [...state, action.user];
         case REMOVE_USER:
             return state.filter(user => user != action.user);
-        case ADD_USERS_LIST:
-            return [...action.usersList];
+        case GET_USERS_LIST_RESPONSE:
+            return [...action.users];
+    }
+
+    return state;
+}
+
+function isLoadingReducer(state = false, action){
+
+    switch (action.type){
+        case GET_USERS_LIST_RESPONSE:
+            return false;
+        case GET_USERS_LIST_REQUEST:
+            return true;
     }
 
     return state;
@@ -19,5 +31,6 @@ function usersListReducer(state = [], action){
 
 export default combineReducers({
     usersList: usersListReducer,
-    selectedUser: selectedUserReducer
+    selectedUser: selectedUserReducer,
+    isLoading: isLoadingReducer
 });

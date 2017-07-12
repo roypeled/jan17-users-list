@@ -1,11 +1,8 @@
-import * as ACTIONS from "./index"
+import * as ACTIONS from "./index";
+import UsersService from "../services/UserService";
 
 export function addUser(user){
     return { type: ACTIONS.ADD_USER, user };
-}
-
-export function addUsersList(usersList){
-    return { type: ACTIONS.ADD_USERS_LIST, usersList };
 }
 
 export function removeUser(user){
@@ -27,3 +24,27 @@ export function logOut(){
 export function setPosts(posts){
     return { type: ACTIONS.SET_POSTS, posts };
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export function getUsersList(){
+    return dispatch => {
+        dispatch( { type: ACTIONS.GET_USERS_LIST_REQUEST} );
+
+        UsersService.getAllUsers()
+            .then( users => dispatch( { type: ACTIONS.GET_USERS_LIST_RESPONSE, users} ) )
+    }
+}
+

@@ -1,5 +1,6 @@
 export const ADD_USER = "addUser";
-export const ADD_USERS_LIST = "addUsersList";
+export const GET_USERS_LIST_REQUEST = "getUsersListRequest";
+export const GET_USERS_LIST_RESPONSE = "getUsersListResponse";
 export const REMOVE_USER = "removeUser";
 export const SELECT_USER = "selectUser";
 export const LOG_IN = "login";
