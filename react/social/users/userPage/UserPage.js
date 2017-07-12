@@ -1,60 +1,51 @@
 import React from "react";
+import {connect} from "react-redux";
 import UserDetails from "./UserDetails";
 import UserPosts from "./UserPosts"
-
-import PostsService from "../../../services/PostsService";
-import UserService from "../../../services/UserService";
+import {getUser} from "../../../actions/creators"
 
 import "./user-page.scss";
 
 
-export default class UserPage extends React.Component {
+class UserPage extends React.Component {
 
-    constructor({match}){
-        super();
+    constructor(props){
+        super(props);
 
-        this.state = {
-            user: null,
-            posts: null
-        };
-
-        if( match.params.id ){
-            this.getPosts(match.params.id);
-            this.getUser(match.params.id);
+        if( props.match.params.id ){
+            props.getUser(props.match.params.id);
         }
     }
 
     componentWillReceiveProps( {match} ){
-        if( match.params.id ){
-            this.getPosts(match.params.id);
-            this.getUser(match.params.id);
+        if( match.params.id &&  match.params.id != this.props.match.params.id){
+            this.props.getUser(match.params.id);
         }
     }
 
-    getPosts(userId){
-        PostsService
-            .getPosts(userId)
-            .then( this.onPosts.bind(this) )
-    }
-
-    getUser(userId){
-        UserService
-            .getUser(userId)
-            .then( this.onUser.bind(this) )
-    }
-
-    onPosts(posts){
-        this.setState({ posts })
-    }
-
-    onUser(user){
-        this.setState({ user })
-    }
-
     render(){
+        if(this.props.isLoading)
+            return <main className="user-page">Loading...</main>;
+
         return (<main className="user-page">
-                    <UserDetails user={ this.state.user }/>
-                    <UserPosts posts={ this.state.posts }/>
+                    <UserDetails user={ this.props.user }/>
+                    <UserPosts posts={ this.props.posts }/>
                 </main>)
     }
 }
+
+function mapStateToProps(state){
+    return {
+        isLoading: state.friends.selectedUser.isLoading,
+        user: state.friends.selectedUser.details,
+        posts: state.friends.selectedUser.posts
+    }
+}
+
+function mapDispatchToProps(dispatch){
+    return {
+        getUser: id => dispatch( getUser(id) )
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserPage);

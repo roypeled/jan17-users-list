@@ -6,7 +6,7 @@ import {Route} from "react-router";
 
 import '../../main.scss';
 
-class Users extends React.Component {
+export default class Users extends React.Component {
 
     render(){
         return (<div>
@@ -15,12 +15,3 @@ class Users extends React.Component {
                 </div>)
     }
 }
-
-
-function mapStateToProps(state){
-    return {
-        selectedUser: state.friends.selectedUser
-    }
-}
-
-export default connect(mapStateToProps, null)(Users);

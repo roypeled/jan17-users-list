@@ -1,5 +1,6 @@
 import * as ACTIONS from "./index";
 import UsersService from "../services/UserService";
+import PostsService from "../services/PostsService";
 
 export function addUser(user){
     return { type: ACTIONS.ADD_USER, user };
@@ -7,10 +8,6 @@ export function addUser(user){
 
 export function removeUser(user){
     return { type: ACTIONS.REMOVE_USER, user };
-}
-
-export function selectUser(user){
-    return { type: ACTIONS.SELECT_USER, user };
 }
 
 export function logIn(user){
@@ -45,6 +42,15 @@ export function getUsersList(){
 
         UsersService.getAllUsers()
             .then( users => dispatch( { type: ACTIONS.GET_USERS_LIST_RESPONSE, users} ) )
+    }
+}
+
+export function getUser(id){
+    return dispatch => {
+        dispatch( { type: ACTIONS.GET_USER_REQUEST} );
+
+        Promise.all([UsersService.getUser(id), PostsService.getPosts(id)])
+            .then( ([user,posts]) => dispatch( { type: ACTIONS.GET_USER_RESPONSE, user, posts} ));
     }
 }
 

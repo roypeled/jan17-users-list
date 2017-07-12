@@ -1,11 +1,11 @@
 import {combineReducers} from "redux";
-import {REMOVE_USER, SELECT_USER, SET_POSTS} from "../actions";
+import {REMOVE_USER, GET_USER_RESPONSE, GET_USER_REQUEST} from "../actions";
 
 
 function detailsReducer(state = null, action){
 
     switch (action.type){
-        case SELECT_USER:
+        case GET_USER_RESPONSE:
             return action.user;
         case REMOVE_USER:
             return state == action.user? null : state;
@@ -17,8 +17,18 @@ function detailsReducer(state = null, action){
 function postsReducer(state = null, action){
 
     switch (action.type){
-        case SET_POSTS:
+        case GET_USER_RESPONSE:
             return action.posts;
+    }
+
+    return state;
+}
+
+function isLoadingReducer(state = false, action){
+
+    switch (action.type){
+        case GET_USER_REQUEST: return true;
+        case GET_USER_RESPONSE: return false;
     }
 
     return state;
@@ -26,5 +36,6 @@ function postsReducer(state = null, action){
 
 export default combineReducers({
     details: detailsReducer,
-    posts: postsReducer
+    posts: postsReducer,
+    isLoading: isLoadingReducer
 })
