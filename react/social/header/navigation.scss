@@ -3,16 +3,14 @@
 .navigation {
     background: $navBackground;
     color: $fontColor;
-    box-shadow: 4px 4px 0 2px rgba(0,0,0,.4);
-    padding: 20px;
-    margin: 20px;
+    padding: 10px 20px;
 
     a {
         color: $fontColor;
         margin: 20px;
         border: 0;
         text-decoration: none;
-        padding: 10px;
+        padding: 5px 10px;
 
         &.active {
             border: 1px solid $fontColor;

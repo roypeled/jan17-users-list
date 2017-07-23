@@ -6,6 +6,8 @@ export default class UserDetails extends React.Component {
             return <article>No User selected</article>;
 
         return (<article>
+                    <div className="cover"
+                         style={ {backgroundImage: `url(//lorempixel.com/800/800?${this.props.user.id})` } }></div>
                     <h1>{ this.props.user.name }</h1>
                     <dl>
                         <dt>Email</dt>

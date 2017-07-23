@@ -4,7 +4,15 @@
     background: $mainBackground;
     padding: 20px;
     margin: 20px;
-    margin-left: 250px;
+    margin-left: 230px;
+
+    .cover {
+        height: 200px;
+        margin: -20px;
+        margin-bottom: 0;
+        background-size: cover;
+        background-position: 50%;
+    }
 
 
     dt {
