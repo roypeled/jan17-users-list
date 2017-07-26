@@ -3,7 +3,7 @@ import {ADD_USER, GET_USERS_LIST_RESPONSE, GET_USERS_LIST_REQUEST, REMOVE_USER} 
 
 import selectedUserReducer from "./selectedUserReducer";
 
-function usersListReducer(state = [], action){
+export function usersListReducer(state = [], action){
     switch (action.type){
         case ADD_USER:
             return [...state, action.user];
@@ -16,7 +16,7 @@ function usersListReducer(state = [], action){
     return state;
 }
 
-function isLoadingReducer(state = false, action){
+export function isLoadingReducer(state = false, action){
 
     switch (action.type){
         case GET_USERS_LIST_RESPONSE:
