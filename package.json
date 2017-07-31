@@ -4,8 +4,7 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "karma start",
-      "app": "webpack-dev-server | node server/app.js"
+    "test": "karma start"
   },
   "repository": {
     "type": "git",
