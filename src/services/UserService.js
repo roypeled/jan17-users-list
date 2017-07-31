@@ -3,7 +3,7 @@ let $ = require("jquery");
 class UserService{
 
     constructor() {
-        this.url = "https://jsonplaceholder.typicode.com/users/";
+        this.url = "/api/users/";
     }
 
     getAllUsers(){

@@ -10,6 +10,13 @@ let mockUserService = {
     }
 };
 
+
+let mockPromise = {
+    all: ()=>{
+        return {then: cb => cb([1,2]) }
+    }
+};
+
 describe("get users list action creator", ()=>{
 
     beforeEach(()=>{
@@ -22,10 +29,10 @@ describe("get users list action creator", ()=>{
         thunked(mockDispatch.dispatch);
 
         expect(mockDispatch.dispatch).toHaveBeenCalledTimes(2);
+        expect(mockUserService.getAllUsers).toHaveBeenCalled();
 
         let [firstAction] = mockDispatch.dispatch.calls.argsFor(0);
         expect(firstAction.type).toBe("getUsersListRequest");
-        expect(mockUserService.getAllUsers).toHaveBeenCalled();
 
         let [secondAction] = mockDispatch.dispatch.calls.argsFor(1);
         expect(secondAction.type).toBe("getUsersListResponse");

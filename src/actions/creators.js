@@ -45,11 +45,11 @@ export function getUsersList(userService = UsersService){
     }
 }
 
-export function getUser(id, usersService = UsersService, postsService = PostsService){
+export function getUser(id, usersService = UsersService, postsService = PostsService, promise = Promise){
     return dispatch => {
         dispatch( { type: ACTIONS.GET_USER_REQUEST} );
 
-        Promise.all([usersService.getUser(id), postsService.getPosts(id)])
+        promise.all([usersService.getUser(id), postsService.getPosts(id)])
             .then( ([user,posts]) => dispatch( { type: ACTIONS.GET_USER_RESPONSE, user, posts} ));
     }
 }

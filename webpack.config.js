@@ -4,7 +4,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
 
-    entry: "./react/index.js",
+    entry: "./src/index.js",
 
     output: {
         path: path.resolve(__dirname, "dist"),
@@ -56,7 +56,10 @@ module.exports = {
     ],
 
     devServer: {
-        historyApiFallback: true
+        historyApiFallback: true,
+        proxy: {
+            "/api": "http://localhost:9090"
+        }
     }
 
 };
