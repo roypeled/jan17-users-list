@@ -1,14 +1,31 @@
 let express = require("express");
+let bodyParser = require("body-parser");
 
 let app = express();
-let users = require("./usersList");
+app.use(bodyParser.json());
+
+let User = require("./UserModel");
 let allPosts = require("./postsList");
 
 let router = express.Router();
 
 router.route("/users")
     .get((req, res) => {
-        res.json(users);
+        User.find(function(err, users){
+           if(!err)
+               res.json(users);
+           else
+               res.status(500).send(err);
+        });
+    })
+    .post((req, res) => {
+        var user = new User(req.body);
+        user.save(function(err, user){
+            if(!err)
+                res.json(user);
+            else
+                res.status(500).send(err);
+        })
     });
 
 router.route("/users/:id")
