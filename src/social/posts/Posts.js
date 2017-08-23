@@ -10,7 +10,7 @@ class Posts extends React.Component {
 
     constructor(props){
         super(props);
-        props.getUser();
+        props.getPosts();
     }
 
     render(){
@@ -36,7 +36,7 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
     return {
-        getUser: filter => dispatch( getPosts(filter) )
+        getPosts: filter => dispatch( getPosts(filter) )
     }
 }
 
