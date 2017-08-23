@@ -7,3 +7,5 @@ export const GET_USER_RESPONSE = "getUserResponse";
 export const LOG_IN = "login";
 export const LOG_OUT = "logout";
 export const SET_POSTS = "setPosts";
+export const GET_POSTS_REQUEST = "getPostsRequest";
+export const GET_POSTS_RESPONSE = "getPostsResponse";

@@ -18,6 +18,7 @@ class Navigation extends React.Component {
         return (<header className="navigation">
                     <span>Hello, {this.props.user.name}</span>
                     <NavLink exact to="/" activeClassName="active">About</NavLink>
+                    <NavLink to="/posts" activeClassName="active">Posts</NavLink>
                     <NavLink to="/users" activeClassName="active">Users</NavLink>
                     <button onClick={ ()=> this.logout() }>Log out</button>
                 </header>);

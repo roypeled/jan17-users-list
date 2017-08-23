@@ -54,3 +54,12 @@ export function getUser(id, usersService = UsersService, postsService = PostsSer
     }
 }
 
+export function getPosts(filter){
+    return dispatch => {
+        dispatch( { type: ACTIONS.GET_POSTS_REQUEST} );
+
+        PostsService.getAll(filter)
+            .then( posts => dispatch( { type: ACTIONS.GET_POSTS_RESPONSE, posts} ) )
+    }
+}
+

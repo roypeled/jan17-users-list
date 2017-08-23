@@ -16,6 +16,10 @@ const state = {
             details: null,
             posts: null
         }
+    },
+    postsPage: {
+        posts: null,
+        loading: false
     }
 };
 
