@@ -1,11 +1,22 @@
 import React from "react";
 
 
-function getPost( {title, body}, index ){
+function getPost( {title, body, author, tags}, index ){
     return (<dl key={ index }>
                 <dt>{title}</dt>
+                { getAuthor(author) }
                 <dd>{body}</dd>
+                <small>{ tags.join(", ") }</small>
             </dl>)
+}
+
+function getAuthor(author){
+    if(!author.name)
+        return "";
+
+    return (
+        <small>{author.name}</small>
+    )
 }
 
 export default class UserPosts extends React.Component{

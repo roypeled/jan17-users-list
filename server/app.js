@@ -43,9 +43,9 @@ router.route("/users/:id/posts")
             .catch(err => res.status(500).send(err));
     })
     .post( (req, res) => {
-        let {title, body} = req.body,
+        let {title, body, tags} = req.body,
             author = req.params.id,
-            post = new Post({title, body, author});
+            post = new Post({title, body, author, tags});
 
         post.save()
             .then(post => res.json(post))
@@ -54,14 +54,17 @@ router.route("/users/:id/posts")
 
 router.route("/posts")
     .get((req, res) => {
-        let {author} = req.query,
+        let {author, page = 1, limit = 3, tags} = req.query,
             filter = {};
 
         if(author)
             filter.author = author;
 
-        Post.find(filter)
-            .then(post => res.json(post))
+        if(tags)
+            filter.tags = tags;
+
+        Post.paginate(filter, {page, limit, populate: "author"})
+            .then(page => res.json(page))
             .catch(err => res.status(500).send(err));
     });
 
